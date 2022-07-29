@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo-App-Vue</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div id="todo-app">
+        <h1>ToDos</h1>
+        <form id="form">
+            <input type="text" v-model="newToDo" class="input" placeholder="Enter your todo" autocomplete="off"
+                @keyup.enter="addToDo">
+            <section v-show="toDo.length">
+                <ul class="todos">
+                    <!-- 查看所有备忘 -->
+                    <!-- v-for 遍历所有备忘，key 绑定备忘 id，class 绑定样式 -->
+                    <li v-for="todo in toDo" class="toDo" :key="toDo.id">
+                    </li>
+                </ul>
+            </section>
+        </form>
+        <small>Left click means complete. <br />
+            Right click to delete the todo.
+        </small>
+    </div>
+</body>
+
+</html>
