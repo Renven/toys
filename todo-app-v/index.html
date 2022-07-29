@@ -14,14 +14,15 @@
 <body>
     <div id="todo-app">
         <h1>ToDos</h1>
-        <form id="form">
+        <form id="form" v-on:submit.prevent="">
             <input type="text" v-model="newToDo" class="input" placeholder="Enter your todo" autocomplete="off"
                 @keyup.enter="addToDo">
             <section v-show="toDo.length">
                 <ul class="todos">
                     <!-- 查看所有备忘 -->
                     <!-- v-for 遍历所有备忘，key 绑定备忘 id，class 绑定样式 -->
-                    <li v-for="todo in toDo" class="toDo" :key="toDo.id">
+                    <li v-for="todo of toDo" class="toDo" :key="toDo.id">
+                        {{todo.title}}
                     </li>
                 </ul>
             </section>
