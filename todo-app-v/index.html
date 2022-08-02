@@ -21,14 +21,16 @@
                 <ul class="todos">
                     <!-- 查看所有备忘 -->
                     <!-- v-for 遍历所有备忘，key 绑定备忘 id，class 绑定样式 -->
-                    <li v-for="todo of toDo" class="toDo" :key="toDo.id">
+                    <li v-for="(todo, index) in toDo" class="toDo isActive" :key="toDo.id"
+                        @click.right.prevent="deleteTodo(index)" @click.left="todoDone(index)">
                         {{todo.title}}
                     </li>
                 </ul>
             </section>
         </form>
         <small>Left click means complete. <br />
-            Right click to delete the todo.
+            Right click to delete the todo.<br />
+            Middle click to update the todo.
         </small>
     </div>
 </body>

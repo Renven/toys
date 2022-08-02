@@ -69,3 +69,7 @@ small {
     margin: 3rem;
     text-align: center;
 }
+
+.active {
+    text-decoration: line-through;
+}

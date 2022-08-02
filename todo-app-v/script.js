@@ -4,6 +4,7 @@ const ToDo = {
         return {
             toDo: [], //ToDo列表
             newToDo: "", //新增的备忘
+            isActive: false,
         }
     },
     methods: {
@@ -20,6 +21,12 @@ const ToDo = {
             });
             //添加成功后，清空输入框
             this.newToDo = " ";
+        },
+        deleteTodo(index) {
+            this.toDo.splice(index, 1)
+        },
+        todoDone(index) {
+            this.isActive = !this.isActive;
         }
     }
 }
