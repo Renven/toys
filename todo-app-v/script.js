@@ -5,6 +5,8 @@ const ToDo = {
             toDo: [], //ToDo列表
             newToDo: "", //新增的备忘
             isActive: false,
+            currentIndex: -1,
+            chooseArr: []
         }
     },
     methods: {
@@ -16,17 +18,38 @@ const ToDo = {
             //往ToDo列表中新增一条
             //新增的ToDo插在最前面，所以使用 unshift 而不是 push
             this.toDo.unshift({
-                id: id++,
+                id: Date.now(),
                 title: this.newToDo,
             });
             //添加成功后，清空输入框
-            this.newToDo = " ";
+            this.newToDo = "";
         },
         deleteTodo(index) {
-            this.toDo.splice(index, 1)
+            // for (var i = 0; i < this.toDo.length; i++) {
+            //     this.toDo. [i] === index;
+            //     this.toDo.id.splice(i, 1)
+            // }
+
+            if (this.chooseArr.includes(index)) {
+                for (var i = 0; i < this.chooseArr.length; i++) {
+                    this.chooseArr[i] === index;
+                    this.chooseArr.splice(i, 1)
+                }
+            } else {
+                return;
+            }
+
         },
         todoDone(index) {
-            this.isActive = !this.isActive;
+            if (!this.chooseArr.includes(index)) {
+                this.chooseArr.push(index)
+            } else {
+                for (var i = 0; i < this.chooseArr.length; i++) {
+                    this.chooseArr[i] === index;
+                    this.chooseArr.splice(i, 1)
+                }
+
+            }
         }
     }
 }

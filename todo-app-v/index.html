@@ -21,8 +21,9 @@
                 <ul class="todos">
                     <!-- 查看所有备忘 -->
                     <!-- v-for 遍历所有备忘，key 绑定备忘 id，class 绑定样式 -->
-                    <li v-for="(todo, index) in toDo" class="toDo isActive" :key="toDo.id"
-                        @click.right.prevent="deleteTodo(index)" @click.left="todoDone(index)">
+                    <li v-for="(todo, index) in toDo" class="toDo" :key="todo.id"
+                        @click.right.prevent="deleteTodo(todo.id)" @click.left="todoDone(todo.id)"
+                        :class="{'active': chooseArr.includes(todo.id)}">
                         {{todo.title}}
                     </li>
                 </ul>
