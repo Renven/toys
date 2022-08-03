@@ -18,17 +18,18 @@ const ToDo = {
             //往ToDo列表中新增一条
             //新增的ToDo插在最前面，所以使用 unshift 而不是 push
             this.toDo.unshift({
-                id: Date.now(),
+                id: id++,
                 title: this.newToDo,
             });
             //添加成功后，清空输入框
             this.newToDo = "";
         },
         deleteTodo(index) {
-            // for (var i = 0; i < this.toDo.length; i++) {
-            //     this.toDo. [i] === index;
-            //     this.toDo.id.splice(i, 1)
-            // }
+            for (var i = 0; i <= this.toDo.length - 1; i++) {
+                if (this.toDo[i].id === index) {
+                    this.toDo.splice(i, 1)
+                }
+            }
 
             if (this.chooseArr.includes(index)) {
                 for (var i = 0; i < this.chooseArr.length; i++) {
